@@ -1,0 +1,82 @@
+
+#### general settings
+
+name: SADT_debanding
+use_tb_logger: true
+model: SADT
+factor: 64 # the width / height of the input image must be a multiple of the factor.
+scale: 2
+gpu_ids: [0]
+
+
+#### datasets
+
+datasets:
+  train:
+    name: debandingDataset
+    mode: LQGTRN
+    dataroot_GT: '../../../../data/debanding_dataset/train/target/' # path to training Clean images
+    dataroot_Noisy: '../../../../data/debanding_dataset/train/source/' # path to training Noisy images
+    dataroot_LQ: ~ # path to training reference LR images, not necessary, if not provided, LR images will be generated in dataloader
+
+    use_shuffle: true
+    n_workers: 8  # per GPU
+    batch_size: 4
+    GT_size: 256
+    use_flip: true
+    use_rot: true
+    color: RGB
+
+  val:
+    name: debandingVal
+    mode: LQGTRN
+    dataroot_GT: '../../../../data/debanding_dataset/FHD/val/target/' # path to validation Clean images
+    dataroot_Noisy: '../../../../data/debanding_dataset/FHD/val/source/' # path to validation Noisy images
+    dataroot_LQ: ~ # path to validation reference LR images, not necessary, if not provided, LR images will be generated in dataloader
+
+
+
+#### network structures
+
+network_G:
+  in_nc: 3
+  out_nc: 3
+
+
+
+#### path
+path:
+  pretrain_model_G: ~ 
+  strict_load: true
+  resume_state: ~
+  val_images: './image_results/'
+
+
+#### training settings: learning rate scheme, loss
+
+train:
+  lr_G: !!float 2e-4
+  beta1: 0.9
+  beta2: 0.999
+  niter: 300000 # 600000
+  warmup_iter: -1  # no warm up
+
+  lr_scheme: CosineAnnealingLR_Restart
+  T_period: [300000]
+  eta_min: !!float 1e-6
+
+  pixel_criterion_forw: l2
+
+  manual_seed: 10
+
+  val_freq: !!float 5e3
+
+  lambda_fit_forw: 16.
+  lambda_ce_forw: 1
+  gradient_clipping: 10
+
+# logger
+
+logger:
+  print_freq: 10
+  save_checkpoint_freq: !!float 5000

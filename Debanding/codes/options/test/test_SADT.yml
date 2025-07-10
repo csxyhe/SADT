@@ -1,0 +1,26 @@
+name:  SADT_debanding
+suffix: ~  # add suffix to saved images
+model: SADT
+factor: 64 # the width / height of the input image must be a multiple of the factor.
+crop_border: ~  # crop border when evaluation. If None(~), crop the scale pixels
+scale: 2
+gpu_ids: [0] 
+
+datasets:
+
+  test_1:
+    name: debanding_test
+    mode: LQGTRN
+    dataroot_GT: '../../../../data/debanding_dataset/FHD/test/target/'  # path to test HR images
+    dataroot_Noisy: '../../../../data/debanding_dataset/FHD/test/source/' 
+    dataroot_LQ: ~ # path to test reference LR images, not necessary, if not provided, LR images will be generated in dataloader
+
+#### network
+network_G:
+  in_nc: 3
+  out_nc: 3
+
+
+#### path
+path:
+  pretrain_model_G: ../experiments/SADT_debanding/models/best_G.pth 
