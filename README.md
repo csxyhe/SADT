@@ -2,7 +2,7 @@
 
 
 
-[Paper Download](https://openaccess.thecvf.com/content/CVPR2025/html/He_A_Universal_Scale-Adaptive_Deformable_Transformer_for_Image_Restoration_across_Diverse_CVPR_2025_paper.html)
+[Paper Link](https://openaccess.thecvf.com/content/CVPR2025/html/He_A_Universal_Scale-Adaptive_Deformable_Transformer_for_Image_Restoration_across_Diverse_CVPR_2025_paper.html)
 
 > **abstract**: Structured artifacts are semi-regular, repetitive patterns that closely intertwine with genuine image content, making their removal highly challenging. In this paper, we introduce the Scale-Adaptive Deformable Transformer, an network architecture specifically designed to eliminate such artifacts from images. The proposed network features two key components: a scale-enhanced deformable convolution module for modeling scale-varying patterns with abundant orientations and potential distortions, and a scale-adaptive deformable attention mechanism for capturing long-range relationships among repetitive patterns with different sizes and non-uniform spatial distributions. Extensive experiments show that our network consistently outperforms state-of-the-art methods in diverse artifact removal tasks, including image deraining, image demoireing, and image debanding.
 
