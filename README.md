@@ -32,8 +32,9 @@ einops
 $ CUDA_HOME=your_cuda_path python3 setup.py build develop
 ```
 
- ***Another version of the SADA module, which is fully implemented in PyTorch and has a faster speed than CUDA version, will be uploaded soon. Stay tuned!***
+ ***Another version of the SADA module, which is fully implemented in PyTorch and has a faster speed than CUDA version, is placed in the root of the project named `deformAttention_torch.py`. You can try it by putting it into the corresponding model directory and replacing `from .deformAttention import SADAttentionBlock, PConv` with `from .deformAttention_torch import SADAttentionBlock, PConv` in `SADT_archs.py` file.***
 
+***The current PyTorch version is implemented using `torch.nn.functional.grid_sample` function. While this function is well-suited for flow-based methods that typically sample a single offset per location, it is not an ideal fit for deformable methods, which inherently require sampling multiple points (e.g., from multiple offset predictions) simultaneously at each position. This architectural mismatch means the current implementation, though functional, may not fully leverage the potential efficiency or expressiveness of deformable attention mechanisms. I am keen to explore more native or performant implementations. If you have insights or code improvements, feel free to reach out. Welcome discussions and contributions!***
 
 
 ## Dataset Download
