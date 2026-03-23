@@ -160,7 +160,7 @@ If you are interested in this work, please consider citing:
 @inproceedings{he2025universal,
   title={A Universal Scale-Adaptive Deformable Transformer for Image Restoration across Diverse Artifacts},
   author={He, Xuyi and Quan, Yuhui and Xu, Ruotao and Ji, Hui},
-  booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
   pages={12731--12741},
   year={2025}
 }
